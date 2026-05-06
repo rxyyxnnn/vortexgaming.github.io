@@ -1,0 +1,28 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h3>VORTEX</h3>
+                <p>The ultimate destination for pro guides, gear reviews, and exclusive gaming deals.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Join the Vortex Elite</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Format "2006" }} Vortex Gaming Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

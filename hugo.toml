@@ -1,0 +1,29 @@
+baseURL = 'https://vortexgaminghub.com/'
+languageCode = 'en-us'
+title = 'Vortex Gaming Hub'
+
+[params]
+  description = 'The ultimate destination for pro guides, gear reviews, and exclusive gaming deals.'
+  colors = { vortex_black = '#0B0C10', deep_space = '#1F2833', electric_cyan = '#66FCF1', plasma_purple = '#B026FF', toxic_green = '#39FF14', pure_white = '#FFFFFF', silver_mist = '#C5C6C7' }
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    name = 'Deals'
+    url = '/deals'
+    weight = 20
+  [[menu.main]]
+    name = 'Guides'
+    url = '/guides'
+    weight = 30
+  [[menu.main]]
+    name = 'Reviews'
+    url = '/reviews'
+    weight = 40
+  [[menu.main]]
+    name = 'The Vault'
+    url = '/vault'
+    weight = 50
