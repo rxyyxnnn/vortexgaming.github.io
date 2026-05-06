@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pro Gaming Guides on Vortex Gaming Hub</title>
+    <link>https://vortexgaminghub.com/guides/</link>
+    <description>Recent content in Pro Gaming Guides on Vortex Gaming Hub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vortexgaminghub.com/guides/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Fix Lag in Valorant</title>
+      <link>https://vortexgaminghub.com/guides/valorant-lag-fix/</link>
+      <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://vortexgaminghub.com/guides/valorant-lag-fix/</guid>
+      <description>Lag can be the difference between a headshot and a whiff. Follow these steps to optimize your network and PC settings for Valorant.&#xA;1. Network Settings Use a wired connection (Ethernet). Disable &amp;ldquo;Network Buffering&amp;rdquo; in game settings. 2. PC Optimization Turn on &amp;ldquo;Nvidia Reflex Low Latency&amp;rdquo;. Set your power plan to &amp;ldquo;High Performance&amp;rdquo;. </description>
+    </item>
+  </channel>
+</rss>
