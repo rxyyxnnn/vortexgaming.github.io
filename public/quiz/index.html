@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Game Should You Play? | Vortex Gaming Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--vortex-black:#0B0C10;--deep-space:#1F2833;--electric-cyan:#66FCF1;--cyber-teal:#45A29E;--toxic-green:#39FF14;--pure-white:#FFFFFF;--silver-mist:#C5C6C7;--plasma-purple:#B026FF}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background-color:var(--vortex-black);color:var(--pure-white);font-family:'Inter',sans-serif;min-height:100vh}
+        h1,h2,h3{font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:1px}
+        .container{max-width:800px;margin:0 auto;padding:40px 20px;text-align:center}
+        .site-header{background:rgba(11,12,16,.95);padding:20px;border-bottom:1px solid var(--deep-space);display:flex;justify-content:center;align-items:center;gap:15px}
+        .site-header a{color:var(--electric-cyan);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700}
+        .vortex-v{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:var(--electric-cyan);border:2px solid var(--electric-cyan);width:45px;height:45px;display:flex;align-items:center;justify-content:center;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+        .quiz-box{background:var(--deep-space);border:2px solid var(--electric-cyan);border-radius:16px;padding:60px 40px;margin-top:60px;clip-path:polygon(2% 0,100% 0,98% 100%,0 100%)}
+        .quiz-box h2{font-size:3rem;color:var(--electric-cyan);margin-bottom:30px;text-shadow:0 0 20px rgba(102,252,241,.4)}
+        .quiz-box p{color:var(--silver-mist);font-size:1.2rem;margin-bottom:40px}
+        .quiz-btn{display:inline-block;padding:18px 50px;background:var(--electric-cyan);color:var(--vortex-black);font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;cursor:pointer;border:none;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%);text-decoration:none;transition:.3s}
+        .quiz-btn:hover{background:var(--pure-white);box-shadow:0 0 25px var(--electric-cyan);transform:translateY(-3px)}
+        .question{display:none;text-align:left}
+        .question.active{display:block}
+        .question h3{font-size:1.8rem;color:var(--electric-cyan);margin-bottom:25px}
+        .option{display:block;background:var(--vortex-black);border:1px solid var(--cyber-teal);color:var(--pure-white);padding:18px 25px;margin-bottom:15px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:1.2rem;text-transform:uppercase;transition:.3s}
+        .option:hover{background:var(--electric-cyan);color:var(--vortex-black)}
+        .result{text-align:center;display:none}
+        .result h2{font-size:3rem;color:var(--electric-cyan);margin-bottom:20px;text-shadow:0 0 20px rgba(102,252,241,.4)}
+        .result p{color:var(--silver-mist);font-size:1.2rem;margin-bottom:30px}
+        .progress{height:6px;background:var(--deep-space);border-radius:3px;margin-bottom:40px;overflow:hidden}
+        .progress-bar{height:100%;background:var(--electric-cyan);width:0%;transition:.5s}
+        @media(max-width:600px){.quiz-box{padding:40px 20px}.quiz-box h2{font-size:2rem}.site-header a{font-size:1.2rem}}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <span class="vortex-v">V</span>
+        <a href="/">VORTEX GAMING HUB</a>
+    </header>
+    <div class="container">
+        <div class="quiz-box" id="quiz">
+            <h2>Which Game Should You Play?</h2>
+            <p>Answer 6 quick questions and we'll recommend the perfect game for you.</p>
+            <div class="progress"><div class="progress-bar" id="progress"></div></div>
+            <div class="question active" data-q="1">
+                <h3>What device do you play on?</h3>
+                <div class="option" onclick="select(0)">PC / Desktop</div>
+                <div class="option" onclick="select(1)">Mobile Phone</div>
+                <div class="option" onclick="select(2)">Console (PS/Xbox)</div>
+                <div class="option" onclick="select(3)">I play on everything</div>
+            </div>
+            <div class="question" data-q="2">
+                <h3>What's your playstyle?</h3>
+                <div class="option" onclick="select(0)">Competitive / Ranked</div>
+                <div class="option" onclick="select(1)">Casual / Relaxed</div>
+                <div class="option" onclick="select(2)">Story / Adventure</div>
+                <div class="option" onclick="select(3)">Multiplayer / Social</div>
+            </div>
+            <div class="question" data-q="3">
+                <h3>How much time do you have?</h3>
+                <div class="option" onclick="select(0)">Quick matches (5-15 min)</div>
+                <div class="option" onclick="select(1)">A few hours</div>
+                <div class="option" onclick="select(2)">Marathon sessions</div>
+                <div class="option" onclick="select(3)">I play when I can</div>
+            </div>
+            <div class="question" data-q="4">
+                <h3>What genres do you love?</h3>
+                <div class="option" onclick="select(0)">FPS / Tactical</div>
+                <div class="option" onclick="select(1)">Battle Royale</div>
+                <div class="option" onclick="select(2)">RPG / Fantasy</div>
+                <div class="option" onclick="select(3)">Sports / Racing</div>
+            </div>
+            <div class="question" data-q="5">
+                <h3>What's your budget?</h3>
+                <div class="option" onclick="select(0)">Free to play</div>
+                <div class="option" onclick="select(1)">Under $20 games</div>
+                <div class="option" onclick="select(2)">Willing to pay for quality</div>
+                <div class="option" onclick="select(3)">I have a gaming budget</div>
+            </div>
+            <div class="question" data-q="6">
+                <h3>How serious are you about gaming?</h3>
+                <div class="option" onclick="select(0)">Just for fun</div>
+                <div class="option" onclick="select(1)">I want to go pro</div>
+                <div class="option" onclick="select(2)">I stream / create content</div>
+                <div class="option" onclick="select(3)">It's my escape</div>
+            </div>
+            <div class="result" id="result">
+                <h2 id="game-title">Loading...</h2>
+                <p id="game-desc"></p>
+                <a href="/guides" class="quiz-btn">Explore Our Guides</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const results=[
+            {title:"VALORANT",desc:"Tactical 5v5 FPS with precision mechanics. Free to play, competitive ranked, runs on low-end PCs. Perfect for ambitious players who want to go pro."},
+            {title:"PUBG MOBILE",desc:"Battle royale on mobile. Quick matches, cross-platform, billions of players. Perfect for mobile gamers who love survival combat."},
+            {title:"GENSHIN IMPACT",desc:"Stunning open-world RPG with gacha mechanics. Beautiful story, endless exploration, and it's completely free. Great for marathon players."},
+            {title:"FREE FIRE",desc:"Fast-paced battle royale optimized for low-end phones. Quick 10-minute matches, solo or squad. Perfect for casual mobile gamers."},
+            {title:"FORTNITE",desc:"Battle royale with building mechanics. Cross-platform, free to play, regular content updates. Great for social gamers and streamers."},
+            {title:"APEX LEGENDS",desc:"Hero-based BR with elite movement mechanics. Free to play, runs on nearly any PC. Perfect for competitive FPS fans."},
+            {title:"ROBLOX",desc:"Infinite games in one platform. Social, creative, family-friendly. Great for casual players who love variety."},
+            {title:"LEAGUE OF LEGENDS",desc:"5v5 MOBA with deep strategy. Free to play, massive esports scene. Best for players who love to master complex mechanics."}
+        ];
+        let q=0,answers=[];
+        function select(a){answers.push(a);document.querySelectorAll('.question')[q].classList.remove('active');q++;document.getElementById('progress').style.width=(q/6*100)+'%';if(q<6){document.querySelectorAll('.question')[q].classList.add('active')}else{const r=answers.reduce((a,b)=>a+b,0)%results.length;document.getElementById('game-title').textContent=results[r].title;document.getElementById('game-desc').textContent=results[r].desc;document.querySelector('.question').style.display='none';document.getElementById('result').style.display='block'}}
+    </script>
+</body>
+</html>
