@@ -20,6 +20,10 @@ title = 'Vortex Gaming Hub'
     url = '/guides'
     weight = 30
   [[menu.main]]
+    name = 'Game Quiz'
+    url = '/quiz'
+    weight = 35
+  [[menu.main]]
     name = 'Reviews'
     url = '/reviews'
     weight = 40

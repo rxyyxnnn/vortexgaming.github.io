@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Game Should You Play? | Vortex Gaming Hub</title>
+    <meta name="description" content="Take our interactive quiz to find your perfect game match based on your device, playstyle, and preferences.">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ba4642133156e2e5a113086ce7c33f43104ea175d712de05602e5372698dff32.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/">
+                    <span class="vortex-v">V</span>
+                    <span class="site-name">VORTEX <small>GAMING HUB</small></span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    
+                    <li><a href="/">Home</a></li>
+                    
+                    <li><a href="/deals">Deals</a></li>
+                    
+                    <li><a href="/guides">Guides</a></li>
+                    
+                    <li><a href="/quiz">Game Quiz</a></li>
+                    
+                    <li><a href="/reviews">Reviews</a></li>
+                    
+                    <li><a href="/vault">The Vault</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">Join Discord</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+    <main>
+        
+<section class="section">
+    <div class="container">
+        <div class="quiz-container alt-bg" id="quiz-box">
+            <div id="quiz-header" class="text-center">
+                <h2 class="section-title">Which Game Should You Play?</h2>
+                <p class="silver-mist" style="text-align: center; margin-bottom: 30px;">Answer a few questions to find your perfect gaming match.</p>
+            </div>
+            <div id="quiz-content" class="mt-4">
+                <div class="text-center">
+                    <p style="margin-bottom: 30px;">Ready to discover your next obsession? Our AI-powered vortex will match your playstyle with the perfect title.</p>
+                </div>
+            </div>
+            <div id="quiz-footer" class="text-center mt-4">
+                <button id="next-btn" class="btn btn-primary btn-lg">Start Quiz</button>
+            </div>
+        </div>
+        
+        <div id="result-container" class="vault-box mt-4" style="display: none; padding: 40px; text-align: center;">
+            <h2 id="result-title" style="font-size: 2rem; color: var(--silver-mist);">Your Perfect Match:</h2>
+            <h3 id="game-name" class="electric-cyan" style="font-size: 4rem; margin: 20px 0; text-shadow: 0 0 15px var(--electric-cyan);"></h3>
+            <p id="game-desc" class="silver-mist" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;"></p>
+            <div id="game-image-box" style="margin-bottom: 30px;">
+                <img id="game-img" src="" alt="" style="max-width: 100%; border-radius: 10px; border: 1px solid var(--electric-cyan);">
+            </div>
+            <div class="mt-4">
+                <button onclick="location.reload()" class="btn btn-outline">Restart Quiz</button>
+                <a href="#" id="game-link" class="btn btn-primary" style="margin-left: 15px;">View Guides</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.quiz-container {
+    padding: 60px 40px;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--electric-cyan), transparent);
+}
+
+.question {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--electric-cyan);
+    text-align: center;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.option-btn {
+    background: var(--vortex-black);
+    color: var(--pure-white);
+    border: 1px solid var(--deep-space);
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+    font-family: 'Inter', sans-serif;
+}
+
+.option-btn:hover, .option-btn.selected {
+    border-color: var(--electric-cyan);
+    background: var(--deep-space);
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
+    transform: translateX(5px);
+}
+
+.text-center { text-align: center; }
+.mt-4 { margin-top: 2rem; }
+
+@media (max-width: 768px) {
+    .game-name { font-size: 3rem; }
+    .question { font-size: 1.5rem; }
+}
+</style>
+
+<script>
+const quizData = [
+    {
+        question: "What's your primary gaming platform?",
+        options: [
+            { text: "Powerful Gaming PC", score: { pc: 10, mobile: 0, console: 5 } },
+            { text: "Smartphone / Tablet", score: { pc: 0, mobile: 10, console: 0 } },
+            { text: "PlayStation / Xbox / Switch", score: { pc: 5, mobile: 0, console: 10 } }
+        ]
+    },
+    {
+        question: "How do you prefer to spend your time?",
+        options: [
+            { text: "Short, intense bursts of action", score: { competitive: 10, casual: 5, story: 0 } },
+            { text: "1-2 hours of focused progression", score: { competitive: 5, casual: 5, story: 5 } },
+            { text: "Losing myself for hours in another world", score: { competitive: 0, casual: 0, story: 10 } }
+        ]
+    },
+    {
+        question: "What drives you most in a game?",
+        options: [
+            { text: "Mastering complex mechanics and outplaying others", score: { competitive: 15, skill: 10 } },
+            { text: "Discovering a rich story and unique world", score: { story: 15, exploration: 10 } },
+            { text: "Creating, building, and self-expression", score: { casual: 10, creative: 15 } }
+        ]
+    },
+    {
+        question: "Teamwork or Solo play?",
+        options: [
+            { text: "I want to be part of a coordinated squad", score: { team: 10, solo: 0 } },
+            { text: "I prefer to rely only on myself", score: { team: 0, solo: 10 } },
+            { text: "I like a mix of both", score: { team: 5, solo: 5 } }
+        ]
+    },
+    {
+        question: "Which setting calls to you?",
+        options: [
+            { text: "Neon-soaked Sci-Fi / Cyberpunk", score: { scifi: 10, fantasy: 0, realistic: 5 } },
+            { text: "Epic High Fantasy / Magic", score: { scifi: 0, fantasy: 10, realistic: 0 } },
+            { text: "Gritty Realistic / Modern", score: { scifi: 5, fantasy: 0, realistic: 10 } }
+        ]
+    }
+];
+
+const games = [
+    {
+        name: "Valorant",
+        desc: "The ultimate tactical 5v5 shooter. Perfect for those who crave precise gunplay and strategic ability usage on PC.",
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600",
+        link: "/guides/valorant-lag-fix",
+        check: (s) => s.pc >= 5 && s.competitive >= 10 && s.team >= 5
+    },
+    {
+        name: "PUBG Mobile",
+        desc: "The premier battle royale experience. Ideal for competitive players who want realistic action on the go.",
+        image: "https://images.unsplash.com/photo-1552824236-0776484ff23b?auto=format&fit=crop&q=80&w=600",
+        link: "/guides",
+        check: (s) => s.mobile >= 10 && s.realistic >= 5
+    },
+    {
+        name: "Elden Ring",
+        desc: "A masterpiece of exploration and challenge. For the solo player who wants to get lost in a dark fantasy world.",
+        image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&q=80&w=600",
+        link: "/reviews",
+        check: (s) => (s.pc >= 5 || s.console >= 5) && s.story >= 10 && s.fantasy >= 5
+    },
+    {
+        name: "Genshin Impact",
+        desc: "A beautiful anime-style open world with deep lore and elemental combat. Great for fantasy lovers on any device.",
+        image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=600",
+        link: "/guides",
+        check: (s) => s.story >= 5 && s.fantasy >= 10
+    },
+    {
+        name: "Minecraft",
+        desc: "The infinite canvas. For the creative mind who wants to build their own destiny alone or with friends.",
+        image: "https://images.unsplash.com/photo-1607988523113-231da316049a?auto=format&fit=crop&q=80&w=600",
+        link: "/vault",
+        check: (s) => s.creative >= 10 || s.casual >= 10
+    },
+    {
+        name: "Free Fire",
+        desc: "Fast-paced battle royale tailored for mobile. Survival and style combined for the modern mobile gamer.",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600",
+        link: "/guides",
+        check: (s) => s.mobile >= 10 && s.competitive >= 5
+    }
+];
+
+let currentQuestion = -1;
+let userScores = {
+    pc: 0, mobile: 0, console: 0,
+    competitive: 0, casual: 0, story: 0,
+    team: 0, solo: 0,
+    scifi: 0, fantasy: 0, realistic: 0,
+    skill: 0, exploration: 0, creative: 0
+};
+
+const quizContent = document.getElementById('quiz-content');
+const nextBtn = document.getElementById('next-btn');
+const quizBox = document.getElementById('quiz-box');
+const resultContainer = document.getElementById('result-container');
+
+nextBtn.addEventListener('click', () => {
+    if (currentQuestion === -1) {
+        currentQuestion = 0;
+        showQuestion();
+        nextBtn.innerText = "Confirm Answer";
+        nextBtn.style.display = "none";
+    } else {
+        const selected = document.querySelector('.option-btn.selected');
+        if (selected) {
+            const scores = JSON.parse(selected.dataset.score);
+            for (let key in scores) {
+                userScores[key] = (userScores[key] || 0) + scores[key];
+            }
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                showQuestion();
+                nextBtn.style.display = "none";
+            } else {
+                showResult();
+            }
+        }
+    }
+});
+
+function showQuestion() {
+    const q = quizData[currentQuestion];
+    quizContent.innerHTML = `
+        <div class="question">Q${currentQuestion + 1}: ${q.question}</div>
+        <div class="options">
+            ${q.options.map((opt, i) => `
+                <button class="option-btn" data-score='${JSON.stringify(opt.score)}'>${opt.text}</button>
+            `).join('')}
+        </div>
+    `;
+    
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            nextBtn.style.display = "inline-block";
+        });
+    });
+}
+
+function showResult() {
+    quizBox.style.display = "none";
+    resultContainer.style.display = "block";
+    
+    let bestMatch = games[0];
+    
+    
+    for (let game of games) {
+        if (game.check(userScores)) {
+            bestMatch = game;
+            break;
+        }
+    }
+    
+    document.getElementById('game-name').innerText = bestMatch.name;
+    document.getElementById('game-desc').innerText = bestMatch.desc;
+    document.getElementById('game-img').src = bestMatch.image;
+    document.getElementById('game-img').alt = bestMatch.name;
+    document.getElementById('game-link').href = bestMatch.link;
+}
+</script>
+
+    </main>
+    
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h3>VORTEX</h3>
+                <p>The ultimate destination for pro guides, gear reviews, and exclusive gaming deals.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    
+                    <li><a href="/">Home</a></li>
+                    
+                    <li><a href="/deals">Deals</a></li>
+                    
+                    <li><a href="/guides">Guides</a></li>
+                    
+                    <li><a href="/quiz">Game Quiz</a></li>
+                    
+                    <li><a href="/reviews">Reviews</a></li>
+                    
+                    <li><a href="/vault">The Vault</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Join the Vortex Elite</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vortex Gaming Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
